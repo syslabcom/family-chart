@@ -83,14 +83,17 @@ export function toggleAllRels(tree_data: TreeDatum[], hide_rels: boolean) {
 }
 
 export function setupSiblings({
-  tree, data_stash, node_separation, sortChildrenFunction
+  main, tree, data_stash, node_separation, sortChildrenFunction
 }: {
+  main: any,
   tree: TreeDatum[],
   data_stash: Data,
   node_separation: number,
   sortChildrenFunction: CalculateTreeOptions['sortChildrenFunction']
 }) {
-  const main = tree.find(d => d.data.main)
+  if (!main) {
+    main = tree.find(d => d.data.main)
+  }
   if (!main) throw new Error('no main')
   const main_father_id = main.data.rels.father
   const main_mother_id = main.data.rels.mother
