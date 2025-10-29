@@ -49,14 +49,17 @@ export function calculateEnterAndExitPositions(d: TreeDatum, entering: boolean, 
 }
 
 export function setupSiblings({
-  tree, data_stash, node_separation, sortChildrenFunction
+  main, tree, data_stash, node_separation, sortChildrenFunction
 }: {
+  main: any,
   tree: TreeDatum[],
   data_stash: Data,
   node_separation: number,
   sortChildrenFunction: CalculateTreeOptions['sortChildrenFunction']
 }) {
-  const main = tree.find(d => d.data.main)
+  if (!main) {
+    main = tree.find(d => d.data.main)
+  }
   if (!main) throw new Error('no main')
   const p1 = main.data.rels.parents[0]
   const p2 = main.data.rels.parents[1]

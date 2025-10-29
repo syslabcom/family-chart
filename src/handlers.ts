@@ -1,3 +1,4 @@
+export * from './layout/handlers'
 export * from './handlers/general'
 export * from './renderers/card-svg/methods'
 export * from './store/new-person'
