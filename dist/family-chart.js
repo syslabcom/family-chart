@@ -130,8 +130,14 @@
         const main_father_id = main.data.rels.father;
         const main_mother_id = main.data.rels.mother;
         const siblings = findSiblings(main);
-        if (siblings.length > 0 && !main.parents)
-            throw new Error('no parents');
+        if (siblings.length > 0 && !main.parents) {
+            if (main.data.parents) {
+                main.parents = main.data.parents;
+            }
+            else {
+                throw new Error('no parents');
+            }
+        }
         const siblings_added = addSiblingsToTree(main);
         positionSiblings(main);
         function findSiblings(main) {
