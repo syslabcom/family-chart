@@ -62,7 +62,13 @@ export function setupSiblings({
   const p2 = main.data.rels.parents[1]
 
   const siblings = findSiblings(main)
-  if (siblings.length > 0 && !main.parents) throw new Error('no parents')
+  if (siblings.length > 0 && !main.parents) {
+    if (main.data.parents) {
+      main.parents = main.data.parents;
+    } else {
+      throw new Error('no parents');
+    }
+  }
   const siblings_added = addSiblingsToTree(main)
   positionSiblings(main)
 
