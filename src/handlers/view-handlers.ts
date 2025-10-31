@@ -108,6 +108,7 @@ export function setupZoom(el: any, props: ZoomProps = {}) {
   function zoomFilter(e: any) {
     if (e.type === "wheel" && !e.ctrlKey) return false
     else if (e.touches && e.touches.length < 2) return false
+    else if (e.type === "dblclick") return false // ignore dblclicks
     else return true
   }
 }

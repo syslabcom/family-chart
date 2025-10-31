@@ -27,8 +27,8 @@ function createHtmlSvg(cont: HTMLElement) {
 
 export function onZoomSetup(getSvgView: () => HTMLElement, getHtmlView: () => HTMLElement) {
   return function onZoom(e: any) {
+    if (e.type === "dblclick") return false // ignore dblclicks
     const t = e.transform
-  
     d3.select(getSvgView()).style('transform', `translate(${t.x}px, ${t.y}px) scale(${t.k}) `)
     d3.select(getHtmlView()).style('transform', `translate(${t.x}px, ${t.y}px) scale(${t.k}) `)
   }
