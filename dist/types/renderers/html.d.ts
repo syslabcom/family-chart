@@ -5,6 +5,6 @@ export default function htmlContSetup(cont: HTMLElement): {
     htmlView: Element | null;
 };
 declare function createHtmlSvg(cont: HTMLElement): HTMLDivElement | null;
-export declare function onZoomSetup(getSvgView: () => HTMLElement, getHtmlView: () => HTMLElement): (e: any) => void;
+export declare function onZoomSetup(getSvgView: () => HTMLElement, getHtmlView: () => HTMLElement): (e: any) => false | undefined;
 /** @deprecated This export will be removed in a future version. Use htmlContSetup instead. */
 export { createHtmlSvg };

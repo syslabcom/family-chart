@@ -1121,6 +1121,8 @@
                 return false;
             else if (e.touches && e.touches.length < 2)
                 return false;
+            else if (e.type === "dblclick")
+                return false; // ignore dblclicks
             else
                 return true;
         }
@@ -1434,6 +1436,8 @@
     }
     function onZoomSetup(getSvgView, getHtmlView) {
         return function onZoom(e) {
+            if (e.type === "dblclick")
+                return false; // ignore dblclicks
             const t = e.transform;
             d3__namespace.select(getSvgView()).style('transform', `translate(${t.x}px, ${t.y}px) scale(${t.k}) `);
             d3__namespace.select(getHtmlView()).style('transform', `translate(${t.x}px, ${t.y}px) scale(${t.k}) `);
